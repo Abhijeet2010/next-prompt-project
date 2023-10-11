@@ -1,0 +1,20 @@
+import mongoose from "mongoose";
+
+const promptSchema = mongoose.Schema({
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  prompt: {
+    type: String,
+    required: [true, "prompt is required"],
+  },
+
+  tag: {
+    type: String,
+    required: [true, "Tag is required"],
+  },
+});
+
+const Prompt = mongoose.models.Prompt || mongoose.model("Prompt", promptSchema);
+export default Prompt;
